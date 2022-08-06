@@ -24,8 +24,27 @@ function addTodo(title, completed) {
 
   //create done button
   const doneBtn = document.createElement("button");
+  doneBtn.style.display = "none";
   doneBtn.innerText = "Done";
   doneBtn.className = "btn btn-success me-2";
+  doneBtn.onclick = () => {
+    if (span.style.textDecoration === "line-through") {
+      span.style.textDecoration = "";
+      saveTodo();
+    } else {
+      span.style.textDecoration = "line-through";
+      saveTodo();
+    }
+  };
+
+  div.onmouseover = () => {
+    doneBtn.style.display = "";
+    deleteBtn.style.display = "";
+  };
+  div.onmouseout = () => {
+    doneBtn.style.display = "none";
+    deleteBtn.style.display = "none";
+  };
 
   //create delete button
   const deleteBtn = document.createElement("button");
